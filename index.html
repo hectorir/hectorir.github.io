@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Major Héctor Alejandro - Marine Corps Entertainment & Media Liaison</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CB4MX1GMKJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            // Enhanced privacy settings
+            anonymize_ip: true,
+            allow_google_signals: false
+        });
+
+        // Custom event tracking function
+        function trackEvent(action, category, label) {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: 1
+            });
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -316,13 +338,13 @@
             <div class="tagline">Partner with the Marines. Gain access and authenticity through the Marine Corps Entertainment Office.</div>
             
             <div class="social-links">
-                <a href="https://www.x.com/MajAlejandro" target="_blank" title="X (Twitter)">
+                <a href="https://www.x.com/MajAlejandro" target="_blank" title="X (Twitter)" onclick="trackEvent('click', 'social_media', 'X/Twitter')">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="https://www.instagram.com/majalejandro" target="_blank" title="Instagram">
+                <a href="https://www.instagram.com/majalejandro" target="_blank" title="Instagram" onclick="trackEvent('click', 'social_media', 'Instagram')">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.cd.marines.mil/Units/emlo/" target="_blank" title="Official EMLO Website">
+                <a href="https://www.cd.marines.mil/Units/emlo/" target="_blank" title="Official EMLO Website" onclick="trackEvent('click', 'social_media', 'EMLO_Website')">
                     <i class="fas fa-globe"></i>
                 </a>
             </div>
@@ -351,15 +373,15 @@
             <div class="card">
                 <h2><i class="fas fa-envelope"></i>Contact</h2>
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="trackEvent('click', 'contact', 'Twitter_Profile')">
                         <i class="fab fa-twitter"></i>
                         <span>Follow me on X: <a href="https://www.x.com/MajAlejandro" target="_blank">@MajAlejandro</a></span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="trackEvent('click', 'contact', 'Instagram_Profile')">
                         <i class="fab fa-instagram"></i>
                         <span>Instagram: <a href="https://www.instagram.com/majalejandro" target="_blank">@majalejandro</a></span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="trackEvent('click', 'contact', 'Official_EMLO_Site')">
                         <i class="fas fa-globe"></i>
                         <span>Official Site: <a href="https://www.cd.marines.mil/Units/emlo/" target="_blank">Marines EMLO</a></span>
                     </div>
@@ -374,7 +396,7 @@
         <div class="cta-section">
             <h2>Ready to Partner with the Marines?</h2>
             <p>Connect with our office to explore authentic collaboration opportunities for your next project.</p>
-            <a href="https://www.cd.marines.mil/Units/emlo/" class="cta-button" target="_blank">
+            <a href="https://www.cd.marines.mil/Units/emlo/" class="cta-button" target="_blank" onclick="trackEvent('click', 'cta', 'Get_Started_Button')">
                 Get Started Today
             </a>
         </div>
@@ -411,6 +433,71 @@
                 link.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0) scale(1)';
                 });
+            });
+
+            // Scroll depth tracking
+            let scrollDepth = 0;
+            let scrollTracked = {
+                25: false,
+                50: false,
+                75: false,
+                100: false
+            };
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.offsetHeight - window.innerHeight;
+                const currentDepth = Math.round((scrollTop / docHeight) * 100);
+                
+                if (currentDepth > scrollDepth) {
+                    scrollDepth = currentDepth;
+                }
+
+                // Track scroll milestones
+                Object.keys(scrollTracked).forEach(depth => {
+                    if (scrollDepth >= parseInt(depth) && !scrollTracked[depth]) {
+                        scrollTracked[depth] = true;
+                        trackEvent('scroll', 'engagement', `${depth}%`);
+                    }
+                });
+            });
+
+            // Time on site tracking
+            let timeOnSite = 0;
+            let timeTracked = {
+                30: false,
+                60: false,
+                120: false,
+                300: false
+            };
+
+            setInterval(function() {
+                timeOnSite += 10;
+                
+                Object.keys(timeTracked).forEach(time => {
+                    if (timeOnSite >= parseInt(time) && !timeTracked[time]) {
+                        timeTracked[time] = true;
+                        trackEvent('time_on_site', 'engagement', `${time}s`);
+                    }
+                });
+            }, 10000); // Check every 10 seconds
+
+            // Section view tracking
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionName = entry.target.querySelector('h2')?.textContent || 'Hero';
+                        trackEvent('section_view', 'engagement', sectionName);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Track hero section
+            sectionObserver.observe(document.querySelector('.hero'));
+            
+            // Track all card sections
+            cards.forEach(card => {
+                sectionObserver.observe(card);
             });
         });
     </script>
