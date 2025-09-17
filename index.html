@@ -6,15 +6,16 @@
     <title>Major Héctor Alejandro - Marine Corps Entertainment & Media Liaison</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CB4MX1GMKJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-CB4MX1GMKJ'); 
+        gtag('config', 'G-CB4MX1GMKJ', { 
             // Enhanced privacy settings
-            anonymize_ip: true,
-            allow_google_signals: false
+            'anonymize_ip': true,
+            'allow_google_signals': false
         });
 
         // Custom event tracking function
@@ -306,7 +307,6 @@
             width: 80px;
             height: 80px;
         }
-
     </style>
 </head>
 <body>
@@ -315,7 +315,8 @@
             <div class="marine-emblem">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Officer_EGA.png" alt="Marine Corps EGA" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
-            <img src="https://github.com/hectorir/hectorir.github.io/blob/main/DSC04280~2.jpg?raw=true" alt="Major Héctor Alejandro" style="width: 180px; height: 180px; border-radius: 50%; border: 4px solid #FFD700; margin: 0 auto 1.5rem; display: block; object-fit: cover;">
+            <!-- Replaced placeholder with actual image -->
+            <img src="https://github.com/hectorir/hectorir.github.io/blob/main/DSC04280~2.jpg?raw=true" alt="Major Héctor Alejandro" style="width: 180px; height: 180px; border-radius: 50%; border: 4px solid #FFD700; margin: 0 auto 1.5rem; display: block; object-fit: cover; object-position: 50% 25%;">
             <h1>Major Héctor Alejandro</h1>
             <div class="title">Director, Marine Corps Entertainment & Media Liaison Office, Los Angeles</div>
             <div class="tagline">Partner with the Marines. Gain access and authenticity through the Marine Corps Entertainment Office.</div>
@@ -330,6 +331,7 @@
                 <a href="https://www.cd.marines.mil/Units/emlo/" target="_blank" title="Official EMLO Website" onclick="trackEvent('click', 'social_media', 'EMLO_Website')">
                     <i class="fas fa-globe"></i>
                 </a>
+                <!-- Added Email Icon -->
                 <a href="mailto:hector.alejandro@usmc.mil?subject=Hi%20Hector!%20Reaching%20out%20for%20USMC%20EMLO%20Support" title="Email" onclick="trackEvent('click', 'social_media', 'Email')">
                     <i class="fas fa-envelope"></i>
                 </a>
@@ -340,7 +342,7 @@
             <div class="card">
                 <h2><i class="fas fa-user"></i>About</h2>
                 <p>As the Director of the Marine Corps Entertainment & Media Liaison Office in Los Angeles, I serve as the primary connection between the entertainment industry and the United States Marine Corps. My mission is to facilitate authentic partnerships that showcase the values, traditions, and stories of Marines while supporting creative projects that honor our service members.</p>
-                <p>With years of military experience and deep understanding of both the entertainment industry and Marine Corps operations, I help bridge the gap between Hollywood and the military, ensuring accurate representation and meaningful collaborations.</p>
+                <p>With years of military experience and a deep understanding of both the entertainment industry and Marine Corps operations, I help bridge the gap between Hollywood and the military, ensuring accurate representation and meaningful collaborations.</p>
             </div>
 
             <div class="card">
@@ -375,7 +377,8 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Marine Corps Entertainment & Media Liaison Office, Los Angeles</span>
                     </div>
-                    <div class="contact-item" onclick="trackEvent('click', 'contact', 'Email')">
+                    <!-- Added Email link in Contact section -->
+                     <div class="contact-item" onclick="trackEvent('click', 'contact', 'Email')">
                         <i class="fas fa-envelope"></i>
                         <span>Email: <a href="mailto:hector.alejandro@usmc.mil?subject=Hi%20Hector!%20Reaching%20out%20for%20USMC%20EMLO%20Support">hector.alejandro@usmc.mil</a></span>
                     </div>
@@ -386,6 +389,7 @@
         <div class="cta-section">
             <h2>Ready to Partner with the Marines?</h2>
             <p>Connect with our office to explore authentic collaboration opportunities for your next project.</p>
+            <!-- Changed CTA button link -->
             <a href="mailto:hector.alejandro@usmc.mil?subject=Hi%20Hector!%20Reaching%20out%20for%20USMC%20EMLO%20Support" class="cta-button" onclick="trackEvent('click', 'cta', 'Get_Started_Button')">
                 Get Started Today
             </a>
@@ -493,3 +497,4 @@
     </script>
 </body>
 </html>
+
